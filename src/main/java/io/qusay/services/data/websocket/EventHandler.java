@@ -7,7 +7,7 @@ import org.springframework.data.rest.core.annotation.HandleAfterCreate;
 import org.springframework.data.rest.core.annotation.HandleAfterDelete;
 import org.springframework.data.rest.core.annotation.HandleAfterSave;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
-import org.springframework.hateoas.EntityLinks;
+import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
@@ -45,6 +45,6 @@ public class EventHandler {
      * Starting with a {@link Schedule}, get the HATEOAS link using spring-data EntityLink
      */
     private String getPath(Schedule schedule) {
-        return this.entityLinks.linkForSingleResource(schedule.getClass(), schedule.getScheduleId()).toUri().getPath();
+        return this.entityLinks.linkFor(schedule.getClass(), schedule.getScheduleId()).toUri().getPath();
     }
 }

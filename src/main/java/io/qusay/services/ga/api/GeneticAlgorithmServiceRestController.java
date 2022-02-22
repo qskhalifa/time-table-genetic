@@ -6,7 +6,7 @@ import io.qusay.services.ga.service.Dispatcher;
 import io.qusay.services.ga.service.GaToDbSerializer;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,7 +72,7 @@ public class GeneticAlgorithmServiceRestController {
 
         // Return a JSON response representing the Job
         JobDto dto = buildJsonResponse(job);
-        dto.add(ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(GeneticAlgorithmServiceRestController.class).createJob(scheduleId, numGenerations, populationSize, proportionRunDownGenerations, crossoverPercentage, mutatePercentage, mutateGenesMax, numEliteSurvivors, queryRate)).withSelfRel());
+        dto.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(GeneticAlgorithmServiceRestController.class).createJob(scheduleId, numGenerations, populationSize, proportionRunDownGenerations, crossoverPercentage, mutatePercentage, mutateGenesMax, numEliteSurvivors, queryRate)).withSelfRel());
         return dto;
     }
 
@@ -94,7 +94,7 @@ public class GeneticAlgorithmServiceRestController {
 
         // Return a JSON response representing the Job
         JobDto dto = buildJsonResponse(job);
-        dto.add(ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(GeneticAlgorithmServiceRestController.class).checkStatusOfJob(jobId)).withSelfRel());
+        dto.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(GeneticAlgorithmServiceRestController.class).checkStatusOfJob(jobId)).withSelfRel());
         return dto;
     }
 
@@ -107,9 +107,9 @@ public class GeneticAlgorithmServiceRestController {
     private JobDto buildJsonResponse(Job job) {
         // Building a HATEOAS JSON object: https://docs.spring.io/spring-hateoas/docs/current/reference/html/
         JobDto dto = new JobDto(job);
-        dto.add(ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(GeneticAlgorithmServiceRestController.class).checkStatusOfJob(job.getJobId())).withRel("checkStatus"));
+        dto.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(GeneticAlgorithmServiceRestController.class).checkStatusOfJob(job.getJobId())).withRel("checkStatus"));
         try {
-            dto.add(ControllerLinkBuilder.linkTo(GeneticAlgorithmServiceRestController.class.getMethod("stopJob", Long.class), job.getJobId()).withRel("stopJob"));
+            dto.add(WebMvcLinkBuilder.linkTo(GeneticAlgorithmServiceRestController.class.getMethod("stopJob", Long.class), job.getJobId()).withRel("stopJob"));
         } catch (NoSuchMethodException ignored) {
         }
         return dto;

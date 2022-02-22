@@ -1,4 +1,3 @@
-/*
 package io.qusay;
 
 import io.qusay.services.data.model.User;
@@ -25,25 +24,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                // Allow all for static web content
-                .antMatchers("/built/**", "/img/**", "/css/**").permitAll()
-                // Require authentication for all other requests
-                .anyRequest().authenticated()
-                .and()
-
-                // Create a login page
-                .formLogin()
-                // After successful login, redirect to "/"
-                .defaultSuccessUrl("/", true)
-                // For login page, permit all to always access it
-                .permitAll()
-                .and()
+       http.authorizeRequests().anyRequest().permitAll();
 
                 // Basic login!
                 // FUTURE: Use more advanced login. 2FA?
-                .httpBasic()
+                http.httpBasic()
                 .and()
 
                 // FUTURE: Do NOT disallow CSRF requests. This is just for making CURL/Postman access easy for testing
@@ -52,4 +37,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutSuccessUrl("/");
     }
 }
-*/

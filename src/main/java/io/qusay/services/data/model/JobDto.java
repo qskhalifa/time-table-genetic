@@ -2,7 +2,7 @@ package io.qusay.services.data.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.sql.Timestamp;
 
@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  * See: https://www.baeldung.com/entity-to-and-from-dto-for-a-java-spring-application
  * Building a HATEOAS JSON object: https://docs.spring.io/spring-hateoas/docs/current/reference/html/
  */
-public class JobDto extends ResourceSupport {
+public class JobDto extends RepresentationModel<JobDto> {
     @JsonProperty("jobId")
     private Long jobId;
     @JsonProperty("startDate")
