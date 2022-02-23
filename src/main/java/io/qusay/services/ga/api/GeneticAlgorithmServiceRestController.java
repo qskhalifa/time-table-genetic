@@ -73,6 +73,7 @@ public class GeneticAlgorithmServiceRestController {
         // Return a JSON response representing the Job
         JobDto dto = buildJsonResponse(job);
         dto.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(GeneticAlgorithmServiceRestController.class).createJob(scheduleId, numGenerations, populationSize, proportionRunDownGenerations, crossoverPercentage, mutatePercentage, mutateGenesMax, numEliteSurvivors, queryRate)).withSelfRel());
+
         return dto;
     }
 
@@ -94,6 +95,7 @@ public class GeneticAlgorithmServiceRestController {
 
         // Return a JSON response representing the Job
         JobDto dto = buildJsonResponse(job);
+
         dto.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(GeneticAlgorithmServiceRestController.class).checkStatusOfJob(jobId)).withSelfRel());
         return dto;
     }
