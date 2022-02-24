@@ -25,7 +25,7 @@ public class Timeslot {
      * Values:
      * 0,1,2,3,4,5,6
      * Maps to:
-     * Mon,Tues,Wed,Thur,Fri,Sat,Sun
+     * ,Sat,Sun,Mon,Tues,Wed,Thur
      */
     @Basic
     @Column(name = "day", nullable = false)
