@@ -1,6 +1,6 @@
 package io.qusay.services.data.websocket;
 
-import io.qusay.services.data.model.Schedule;
+import io.qusay.model.Schedule;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.core.annotation.HandleAfterCreate;

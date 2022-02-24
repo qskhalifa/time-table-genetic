@@ -1,6 +1,6 @@
 package io.qusay;
 
-import io.qusay.services.data.model.User;
+import io.qusay.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

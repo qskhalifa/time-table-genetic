@@ -1,7 +1,7 @@
 package io.qusay;
 
-import io.qusay.services.data.api.UserRepository;
-import io.qusay.services.data.model.User;
+import io.qusay.services.api.UserRepository;
+import io.qusay.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
